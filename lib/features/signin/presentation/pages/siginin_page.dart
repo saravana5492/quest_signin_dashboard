@@ -96,7 +96,7 @@ class _SigninPageState extends State<SigninPage> with TickerProviderStateMixin {
           }
 
           if (state is SingleSigninSuccess || state is DualSigninSuccess) {
-            showSnackBar(context, "Signed in successfully!!");
+            _navigateToDashboard();
             _clearUserInputs();
           }
         },
