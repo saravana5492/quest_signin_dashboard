@@ -7,6 +7,7 @@ import 'package:quest_signin_dashboard/comman/responsive/responsive.dart';
 import 'package:quest_signin_dashboard/core/utils/snackbar.dart';
 import 'package:quest_signin_dashboard/comman/widgets/language_selection_button.dart';
 import 'package:quest_signin_dashboard/features/dashboard/presentation/pages/bottom_navigationbar.dart';
+import 'package:quest_signin_dashboard/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:quest_signin_dashboard/features/signin/presentation/bloc/signin_bloc.dart';
 import 'package:quest_signin_dashboard/features/signin/presentation/widgets/dual_signin_form.dart';
 import 'package:quest_signin_dashboard/features/signin/presentation/widgets/main_siginin_form.dart';

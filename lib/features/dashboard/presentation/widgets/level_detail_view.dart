@@ -18,7 +18,7 @@ class LevelDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 29,
+      top: 45,
       right: 110,
       child: ContainerBubbleView(
         bubbleType: isEven ? BubbleType.sendBubble : BubbleType.receiverBubble,

@@ -16,6 +16,8 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  void _tappedLevel(int atIndex) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,10 +42,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 int actualIndex = index - 1;
                 return LevelCell(
                   level: level,
-                  isEven: (actualIndex == 0 || actualIndex % 2 == 0),
-                  isFirstIndex: actualIndex == 0,
+                  index: actualIndex,
                   isLastIndex:
                       actualIndex == dummyCareerPathData.allLevels.length - 1,
+                  tappedLevelIndex: _tappedLevel,
                 );
               } else {
                 return DashboardFooter(careerPath: dummyCareerPathData);
