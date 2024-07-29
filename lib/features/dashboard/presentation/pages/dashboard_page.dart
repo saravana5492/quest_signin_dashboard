@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quest_signin_dashboard/comman/responsive/responsive.dart';
 import 'package:quest_signin_dashboard/core/config/app_color.dart';
 import 'package:quest_signin_dashboard/features/dashboard/data/dummy_data/careerpath_data.dart';
 import 'package:quest_signin_dashboard/features/dashboard/domain/entities/careerpath.dart';
@@ -22,6 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
         backgroundColor: AppColor.whiteColor,
         centerTitle: false,
         title: DashboardAppbarTitle(
@@ -30,29 +32,51 @@ class _DashboardPageState extends State<DashboardPage> {
         actions: const [UserPointsView()],
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: ListView.builder(
-            itemCount: dummyCareerPathData.allLevels.length + 2,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return DashboardCareerHeader(careerPath: dummyCareerPathData);
-              } else if (index - 1 < dummyCareerPathData.allLevels.length) {
-                Level level = dummyCareerPathData.allLevels[index - 1];
-                int actualIndex = index - 1;
-                return LevelCell(
-                  level: level,
-                  index: actualIndex,
-                  isLastIndex:
-                      actualIndex == dummyCareerPathData.allLevels.length - 1,
-                  tappedLevelIndex: _tappedLevel,
-                );
-              } else {
-                return DashboardFooter(careerPath: dummyCareerPathData);
-              }
-            },
-          ),
-        ),
+        child: _responsiveLayout(),
+      ),
+    );
+  }
+
+  Widget _responsiveLayout() {
+    if (Responsive.isMobile(context)) {
+      return _careerPath();
+    } else {
+      return Center(
+        child: Container(
+            width: 540,
+            padding: const EdgeInsets.all(31),
+            margin: const EdgeInsets.only(top: 24, bottom: 24),
+            decoration: BoxDecoration(
+                color: AppColor.whiteColor,
+                border: Border.all(color: AppColor.borderColor),
+                borderRadius: BorderRadius.circular(24)),
+            child: _careerPath()),
+      );
+    }
+  }
+
+  Widget _careerPath() {
+    return Container(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: ListView.builder(
+        itemCount: dummyCareerPathData.allLevels.length + 2,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return DashboardCareerHeader(careerPath: dummyCareerPathData);
+          } else if (index - 1 < dummyCareerPathData.allLevels.length) {
+            Level level = dummyCareerPathData.allLevels[index - 1];
+            int actualIndex = index - 1;
+            return LevelCell(
+              level: level,
+              index: actualIndex,
+              isLastIndex:
+                  actualIndex == dummyCareerPathData.allLevels.length - 1,
+              tappedLevelIndex: _tappedLevel,
+            );
+          } else {
+            return DashboardFooter(careerPath: dummyCareerPathData);
+          }
+        },
       ),
     );
   }

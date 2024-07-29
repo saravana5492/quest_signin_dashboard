@@ -14,28 +14,32 @@ class DashboardFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 76,
       padding: const EdgeInsets.all(16.0),
       color: Colors.black,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Start ${careerPath.currentLevelTitle}",
-                style: AppTextStyle.largeSemiBoldBodyStyle
-                    .copyWith(color: AppColor.whiteColor),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                careerPath.currentLevelDescription,
-                style: AppTextStyle.extraSmallSemiBoldBodyStyle
-                    .copyWith(color: AppColor.whiteColor),
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Start ${careerPath.currentLevelTitle}",
+                  style: AppTextStyle.largeSemiBoldBodyStyle
+                      .copyWith(color: AppColor.whiteColor),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  careerPath.currentLevelDescription,
+                  style: AppTextStyle.extraSmallSemiBoldBodyStyle
+                      .copyWith(color: AppColor.whiteColor),
+                  maxLines: 3,
+                )
+              ],
+            ),
           ),
-          const Spacer(),
+          const SizedBox(width: 24),
           Container(
             padding:
                 const EdgeInsets.only(left: 20, top: 8, bottom: 8, right: 6),

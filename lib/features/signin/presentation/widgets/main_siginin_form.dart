@@ -15,21 +15,23 @@ class MainSigninForm extends StatefulWidget {
     required this.singleSigninForm,
     required this.dualSigninForm,
     required this.otpLoginPressed,
+    required this.selectedTabbarIndex,
+    required this.updateSelectedTabIndex,
   });
 
   final TabController tabController;
   final void Function(int) signinPressed;
+  final void Function(int) updateSelectedTabIndex;
   final SingleSigninForm singleSigninForm;
   final DualSigninForm dualSigninForm;
   final VoidCallback otpLoginPressed;
+  final int selectedTabbarIndex;
 
   @override
   State<MainSigninForm> createState() => _MainSigninFormState();
 }
 
 class _MainSigninFormState extends State<MainSigninForm> {
-  var _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,7 +45,7 @@ class _MainSigninFormState extends State<MainSigninForm> {
         TabBar(
           onTap: (index) {
             setState(() {
-              _selectedIndex = index;
+              widget.updateSelectedTabIndex(index);
             });
           },
           indicatorColor: AppColor.textColor,
@@ -59,9 +61,9 @@ class _MainSigninFormState extends State<MainSigninForm> {
         ),
         // Signle and dual Signin Form Content
         Builder(builder: (_) {
-          if (_selectedIndex == 0) {
+          if (widget.selectedTabbarIndex == 0) {
             return widget.singleSigninForm;
-          } else if (_selectedIndex == 1) {
+          } else if (widget.selectedTabbarIndex == 1) {
             return widget.dualSigninForm;
           } else {
             return Container();
@@ -70,7 +72,7 @@ class _MainSigninFormState extends State<MainSigninForm> {
         // Login and other buttons
         AppFilledButton(
             title: "Login",
-            onPressed: () => widget.signinPressed(_selectedIndex)),
+            onPressed: () => widget.signinPressed(widget.selectedTabbarIndex)),
         const SizedBox(height: 12),
         const Text(
           "or",

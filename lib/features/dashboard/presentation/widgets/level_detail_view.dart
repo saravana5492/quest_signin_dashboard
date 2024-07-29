@@ -26,37 +26,40 @@ class LevelDetailView extends StatelessWidget {
           width: 174,
           height: 90,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    level.title,
-                    style: AppTextStyle.smallSemiBoldBodyStyle
-                        .copyWith(color: AppColor.primaryColor),
-                  ),
-                  const Spacer(),
-                  Text(
-                    level.description,
-                    style: AppTextStyle.smallSemiBoldBodyStyle,
-                    softWrap: true,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const Spacer(),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: BoxDecoration(
-                        color: AppColor.primaryColor,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Text(
-                      'Start ${level.title}',
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      level.title,
                       style: AppTextStyle.smallSemiBoldBodyStyle
-                          .copyWith(color: AppColor.whiteColor),
+                          .copyWith(color: AppColor.primaryColor),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                    Text(
+                      level.description,
+                      style: AppTextStyle.smallSemiBoldBodyStyle,
+                      softWrap: true,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                          color: AppColor.primaryColor,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Text(
+                        "Start Level 1",
+                        style: AppTextStyle.smallSemiBoldBodyStyle
+                            .copyWith(color: AppColor.whiteColor),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(width: 8),
               Column(

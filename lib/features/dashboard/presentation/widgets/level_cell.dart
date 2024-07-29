@@ -31,9 +31,8 @@ class _LevelCellState extends State<LevelCell> {
   @override
   Widget build(BuildContext context) {
     var children = [
-      Container(
+      SizedBox(
         width: double.infinity,
-        color: AppColor.backgroundColor,
         child: CustomPaint(
           size: const Size(
             double.infinity,
